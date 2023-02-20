@@ -1,26 +1,20 @@
-async function getData() {
+let searchForm = document.querySelector('.search-form');
+
+//Get data with async function
+async function getDataWithInput(input) {
     try {
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&APPID=834d982d871559ff2a0d66421c2599fc`, { mode: 'cors' })
-        let weatherData = await response.json();
-        console.log(weatherData.main.temp);
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=834d982d871559ff2a0d66421c2599fc`, { mode: 'cors' })
+        weatherData = await response.json();
+        return weatherData;
     } catch (error) {
         console.log(error);
     }
 }
 
-function getDataPromise() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&APPID=834d982d871559ff2a0d66421c2599fc`, { mode: 'cors' })
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (response) {
-        console.log(response.main.temp);
-    })
-    .catch(e => {
-        console.log(e)
-    });  
-}
-getData();
-getDataPromise();
-
-
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let searchInput = document.querySelector('#search-input').value;
+    getDataWithInput(searchInput.toString()).then(function (data) {
+        console.log(data);
+    });
+});

@@ -1,0 +1,39 @@
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2.5rem;
+    min-width: 500px;
+}
+
+.search-form {
+    min-width: 400px;
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#search-input {
+    flex: 5;
+}
+
+#search-form-submit {
+    flex: 1;
+}
+
+@media screen and (max-width: 650px) {
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    
+}
