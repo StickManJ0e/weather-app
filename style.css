@@ -59,11 +59,12 @@ h1.header-logo {
     justify-content: center;
     padding: 3rem 0;
 }
+
 .current-name {
     font-size: 30px;
 }
 
-.current-dt, 
+.current-dt,
 .current-main {
     font-size: 20px;
 }
@@ -80,12 +81,40 @@ h1.header-logo {
     padding: 0 1rem;
 }
 
-.units-toggle.metric > p.metric {
+.units-toggle.metric>p.metric {
     font-weight: 700;
 }
 
-.units-toggle.imperial > p.imperial {
+.units-toggle.imperial>p.imperial {
     font-weight: 700;
+}
+
+.next-day-weather-forecast {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    gap: 1rem;
+    width: 100px;
+    min-height: 250px;
+    border-top: #023047 3px solid;
+    border-bottom: #023047 3px solid;
+    margin-right: 1rem;
+}
+
+.trihourly-weather-div {
+    min-width: 85.6px;
+    flex: 1;
+}
+
+.current-weather-div {
+    display: flex;
+    margin: 1rem 0;
 }
 
 
@@ -94,11 +123,23 @@ h1.header-logo {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0;
+        padding: 2rem 0;
     }
 
     .search-form {
         margin-bottom: 2rem;
     }
-    
+
+    .current-weather-div {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        gap: 2rem;
+    }
+
+    .next-day-weather-forecast {
+        width: 80vw;
+    }
+
 }
