@@ -63,7 +63,36 @@ function appendDateTempMain(data, appendLocation, indexNum, date) {
     weatherTemp.textContent = `${roundTempreture((data.list[indexNum]).main.temp)}˚`;
     appendLocation.appendChild(weatherTemp);
 
+    //Append Main
+    let weatherMain = document.createElement('div');
+    weatherMain.classList.add('weather-main');
+    weatherMain.textContent = (data.list[indexNum]).weather[0].main;
+    appendLocation.appendChild(weatherMain);
+}
+
+function appendDateMinMaxMain(data, appendLocation, indexNum, date) {
+    //Append Date
+    let weatherDt = document.createElement('div');
+    weatherDt.classList.add('weather-dt');
+    weatherDt.textContent = (date);
+    appendLocation.appendChild(weatherDt);
+
     //Append Tempreture
+    let weatherTemp = document.createElement('div');
+    weatherTemp.classList.add('weather-temp');
+    appendLocation.appendChild(weatherTemp);
+
+    let tempMin = document.createElement('div');
+    tempMin.classList.add('weather-min');
+    tempMin.textContent = `L: ${roundTempreture((data.list[indexNum]).main.temp_min)}˚`;
+    weatherTemp.appendChild(tempMin);
+
+    let tempMax = document.createElement('div');
+    tempMax.classList.add('weather-max');
+    tempMax.textContent = `H: ${roundTempreture((data.list[indexNum]).main.temp_max)}˚`;
+    weatherTemp.appendChild(tempMax);
+
+    //Append Main
     let weatherMain = document.createElement('div');
     weatherMain.classList.add('weather-main');
     weatherMain.textContent = (data.list[indexNum]).weather[0].main;
@@ -97,18 +126,24 @@ function getNext24HourForecast(data) {
 
         let date = new Date((data.list[i]).dt * 1000);
         date = (date.toLocaleTimeString()).slice(0, -3);
-        appendDateTempMain(data, triHourlyWeather, i,date);
+        appendDateTempMain(data, triHourlyWeather, i, date);
     };
 }
 
 //Get the following day's weather
 function getFollowingDaysWeather(data) {
+    let nextWeekForecastDiv = document.querySelector('.next-week-weather-forecast');
     let currentDate = new Date((data.list[0]).dt * 1000);
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
     for (let i = 0; i < 5; i++) {
-        let nextDay = currentDate.setDate(currentDate.getDate() + 1);
-        nextDay = (new Date(nextDay)).getDay();
-        console.log(weekdays[nextDay]);
+        let dailyWeather = document.createElement('div');
+        dailyWeather.classList.add('daily-weather-div');
+        nextWeekForecastDiv.appendChild(dailyWeather);
+
+        let nextDate = currentDate.setDate(currentDate.getDate() + 1);
+        nextDate = (new Date(nextDate)).getDay();
+        appendDateMinMaxMain(data, dailyWeather, i, weekdays[nextDate])
     }
 }
 

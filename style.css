@@ -89,22 +89,31 @@ h1.header-logo {
     font-weight: 700;
 }
 
-.next-day-weather-forecast {
+.next-day-weather-forecast,
+.next-week-weather-forecast {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    text-align: center;
     padding: 20px;
     flex: 1;
     justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    gap: 1rem;
-    width: 100px;
     min-height: 250px;
     border-top: #023047 3px solid;
     border-bottom: #023047 3px solid;
+    gap: 1rem;
+}
+
+.next-day-weather-forecast {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+    white-space: nowrap;
+    width: 100px;
     margin-right: 1rem;
+    align-items: center;
+}
+
+.next-week-weather-forecast {
+    margin: 3rem;
+    flex-direction: column;
 }
 
 .trihourly-weather-div {
@@ -112,13 +121,29 @@ h1.header-logo {
     flex: 1;
 }
 
+.daily-weather-div {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
 .current-weather-div {
     display: flex;
     margin: 1rem 0;
 }
 
+.daily-weather-div > .weather-temp {
+    display: flex;
+    gap: 1rem;
+}
 
-@media screen and (max-width: 650px) {
+footer {
+    height: 50px;
+}
+
+@media screen and (max-width: 750px) {
     header {
         flex-direction: column;
         justify-content: center;
