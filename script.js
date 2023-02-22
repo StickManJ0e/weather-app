@@ -135,6 +135,7 @@ function getFollowingDaysWeather(data) {
     let nextWeekForecastDiv = document.querySelector('.next-week-weather-forecast');
     let currentDate = new Date((data.list[0]).dt * 1000);
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    removeElementChildren(nextWeekForecastDiv);
 
     for (let i = 0; i < 5; i++) {
         let dailyWeather = document.createElement('div');
@@ -168,6 +169,7 @@ unitsToggle.addEventListener('click', () => {
     units = (units === 'metric') ? 'imperial' : 'metric';
     unitsToggle.classList.add(units);
     getCurrentWeatherData(currentLocation);
+    getForecastWeatherData(currentLocation);
 })
 
 //Retrive and append data for 'Melbourne, AU' upon page load
