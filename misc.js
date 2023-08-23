@@ -1,5 +1,3 @@
-
-
 getData().then(function (data) {
     console.log(data);
     //Get date and format
